@@ -1,0 +1,2 @@
+for %%i in ("input\*.mp4") do ffmpeg -hwaccel cuda -y -i "input\%%~ni.mp4" -vcodec libvpx -qmin 0 -qmax 50 -crf 10 -b:v 1M -acodec libvorbis "output_%%~ni.webm" && ^ffmpeg -i "output_%%~ni.webm" -filter:v scale=1280:720 -c:a copy "output\%%~ni.webm"
+pause
